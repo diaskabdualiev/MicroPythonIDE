@@ -1058,13 +1058,9 @@ export function applyTranslation() {
 
     const fn = 'test.py'
     const content = `
-# ViperIDE - MicroPython Web IDE
-# Read more: https://github.com/vshymanskyy/ViperIDE
+# ViperIDE — Веб-IDE для MicroPython
 
-# Connect your device and start creating! 🤖👨‍💻🕹️
-
-# You can also open a virtual device and explore some examples:
-# https://viper-ide.org?vm=1
+# Подключите своё устройство и начинайте творить! 🤖👨‍💻🕹️
 `
     await _loadContent(fn, content, createTab(fn))
 

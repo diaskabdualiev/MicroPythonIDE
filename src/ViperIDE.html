@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViperIDE</title>
+    <title>AlashIDE</title>
     <link rel="icon" type="image/png" href="assets/favicon.png"/>
     <link rel="manifest" href="manifest.json">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="./app.css">
 </head>
 <body id="app">
     <div id="tool-panel">
         <div>
             <button onclick="app.toggleSideMenu()"><i class="fa-solid fa-bars"></i></button>
-            <span class="logo">ViperIDE</span>
-            <button title="Save File [Ctrl+S]"   onclick="app.saveCurrentFile()" id="btn-save"><i class="fa-solid fa-download"></i></button>
-            <button title="Run File [F5]"        onclick="app.runCurrentFile()"  id="btn-run"><i class="fa-solid fa-circle-play" id="btn-run-icon"></i></button>
+            <span class="logo">AlashIDE</span>
+            <button title="Save File [Ctrl+S]"   onclick="app.saveCurrentFile()" id="btn-save">Save <i class="fa-solid fa-download"></i></button>
+            <button title="Run File [F5]"        onclick="app.runCurrentFile()"  id="btn-run">Run <i class="fa-solid fa-circle-play" id="btn-run-icon"></i></button>
         </div>
         <div>
-            <button title="Connect WebREPL"      onclick="app.connectDevice('ws')"  id="btn-conn-ws" ><i class="fa-solid fa-link"></i></button>
-            <button title="Connect Bluetooth"    onclick="app.connectDevice('ble')" id="btn-conn-ble"><i class="fa-brands fa-bluetooth-b"></i></button>
-            <button title="Connect USB/Serial"   onclick="app.connectDevice('usb')" id="btn-conn-usb"><i class="fa-brands fa-usb"></i></button>
-            <button title="Full Screen" onclick="app.toggleFullScreen('app')"  id="app-expand"><i class="fa-solid fa-expand"></i></button>
+            <button title="Connect WebREPL"      onclick="app.connectDevice('ws')"  id="btn-conn-ws" >WebREPL <i class="fa-solid fa-link"></i></button>
+            <button title="Connect Bluetooth"    onclick="app.connectDevice('ble')" id="btn-conn-ble">Ble <i class="fa-brands fa-bluetooth-b"></i></button>
+            <button title="Connect USB/Serial"   onclick="app.connectDevice('usb')" id="btn-conn-usb">USB <i class="fa-brands fa-usb"></i></button>
+            <button title="Full Screen" onclick="app.toggleFullScreen('app')"  id="app-expand">Full Screen <i class="fa-solid fa-expand"></i></button>
         </div>
     </div>
     <div id="container">
@@ -36,8 +36,6 @@
                 <div>
                     <a class="tab" data-target="menu-settings"><i class="fa-solid fa-sliders fa-fw"></i></a>
                     <a class="tab" data-target="menu-about"><i class="fa-solid fa-circle-info fa-fw"></i></a>
-                    <!--button onclick="TODO"><i class="fa-regular fa-message fa-fw"></i></button>
-                    <button onclick="TODO"><i class="fa-regular fa-star fa-fw"></i></button-->
                 </div>
             </div>
 
@@ -72,12 +70,6 @@
                     <div class="title-lines" id="menu-tools-python">Python</div>
                     <div><a href="#" onclick="app.pyPrettify()" id="py-prettify">🎀 Prettify current file</a></div>
                     <div><a href="#" onclick="app.pyMinify()" id="py-minify">🤏 Minify current file</a></div>
-
-                    <!--div><a href="#" onclick="TODO()" id="download-all">📥 Download all files</a></div>
-                    <div><a href="#" onclick="TODO()" id="publish">🚀 Publish on ViperIDE</a></div>
-
-                    <div class="title-lines" id="menu-tools-blynk">Blynk IoT</div>
-                    <div><a href="#" onclick="TODO()" id="blynk-ota-package">📦 Generate OTA package</a></div-->
                 </div>
             </div>
             <div id="menu-settings" class="tab-content">
@@ -91,7 +83,6 @@
                     <div><input type="checkbox" id="expand-minify-json" checked/><label for="expand-minify-json">Auto expand/minify JSON</label></div>
                     <div><input type="checkbox" id="use-word-wrap"/><label for="use-word-wrap">Word wrapping</label></div>
                     <div><input type="checkbox" id="render-markdown" checked/><label for="render-markdown">Enable Markdown viewer</label></div>
-                    <!--div><input type="checkbox" id="auto-soft-reset" checked/><label for="auto-soft-reset">Soft-reset on Run/Save File</label></div-->
                     <div class="title-lines" id="menu-line-pkg-mgr">package manager</div>
                     <div><input type="checkbox" id="install-package-source"/><label for="install-package-source">Prefer installing sources (.py)</label></div>
                     <div class="title-lines" id="menu-line-other">other</div>
@@ -99,35 +90,8 @@
                         <label for="lang">Language:</label>
                         <select id="lang">
                             <!-- Indo-European Languages -->
-                            <option value="en">🇺🇸 USA, 🇬🇧 British</option>
-                            <option value="es">🇪🇸 Español</option>
-                            <option value="hi">🇮🇳 हिंदी</option>
-                            <option value="fr">🇫🇷 Français</option>
-                            <option value="pt">🇵🇹 Português</option>
-                            <option value="de">🇩🇪 Deutsch</option>
-                            <option value="pl">🇵🇱 Polski</option>
-                            <option value="it">🇮🇹 Italiano</option>
-                            <option value="uk">🇺🇦 Українська</option>
-                            <option value="ro">🇷🇴 Română</option>
-                            <option value="nl">🇳🇱 Nederlands</option>
-                            <option value="sv">🇸🇪 Svenska</option>
-                            <option value="el">🇬🇷 Ελληνικά</option>
-                            <option value="ru">🇷🇺🪖🚢🏃🖕</option>
-
-                            <!-- Sino-Tibetan Languages -->
-                            <option value="zh-CN">🇨🇳 简体中文</option>
-                            <option value="zh-TW">🇹🇼 繁體中文</option>
-
-                            <!-- Afro-Asiatic Languages -->
-                            <option value="ar">🇸🇦 العربية</option>
-                            <option value="he">🇮🇱 עברית</option>
-
-                            <!-- Altaic Languages -->
-                            <option value="ja">🇯🇵 日本語</option>
-                            <option value="ko">🇰🇷 한국어</option>
-
-                            <!-- Austronesian Languages -->
-                            <option value="id">🇮🇩 Bahasa Indonesia</option>
+                            <option value="en">English</option>
+                            <option value="ru">Русский</option>
                         </select>
                     </div>
                     <div class="space-between">
@@ -147,8 +111,8 @@
                 <a class="github-fork-ribbon left-top" href="https://github.com/vshymanskyy/ViperIDE" target="_blank" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
                 <div style="text-align: center; padding: 50px 0 0 0;">
                     <img src="assets/logo_1024.png" alt="Logo" width="30%">
-                    <div style="font-size:1.5em;">ViperIDE</div>
-                    <div id='viper-ide-version'></div>
+                    <div style="font-size:1.8em; font-weight:600; margin: 10px 0;">ViperIDE</div>
+                    <div id='viper-ide-version' style="font-size:1.1em; color:var(--fg-color-highlight);"></div>
                     <small><div id='viper-ide-build'></div></small>
                     <p>
                         MicroPython Web IDE<br>
@@ -165,9 +129,6 @@
                     </p>
                     <hr/>
                 </div>
-                <p style="text-align: center;">
-                    With 💙💛 from <a class="link" href="https://stand-with-ukraine.pp.ua" target="_blank">Ukraine</a>
-                </p>
             </div>
         </div>
         <div id="main-editor">
@@ -176,7 +137,6 @@
                 <div class="tabs" id="terminal-tabs" onmousedown="app.initDrag(event)" ontouchstart="app.initDrag(event)">
                     <div>
                         <a class="tab active" data-target="xterm"><i class="fa-solid fa-terminal"></i> <span id="tab-term">Terminal</span></a>
-                        <!--a class="tab"        data-target="logs"><i class="fa-solid fa-bug"></i> IDE Logs</a-->
                     </div>
                     <div>
                         <button title="Clear" onclick="app.clearTerminal()" id="term-clear"><i class="fa-solid fa-trash-can"></i></button>
